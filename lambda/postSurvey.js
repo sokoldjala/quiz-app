@@ -4,7 +4,7 @@ module.exports.handler = async function (event, context, callback) {
     if (Array.isArray(payload) && payload.length === 11) {
       payload.map((item)=> {
         if(!item.id || item.id === "" || !item.value || item.value === ""){
-          console.log("TCL: item", item)
+          console.log("TCL: item", item.id)
           return {
             // return null to show no errors
             statusCode: 422, // http status code
