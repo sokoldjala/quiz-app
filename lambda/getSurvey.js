@@ -22,7 +22,7 @@ module.exports.handler = async function (event, context) {
                 id: 2,
                 question:"Considering your complete experience at our dine-in restaurant, how likely would you be to recommend us to a friend or a colleague?",
                 answers:[0,1,2,3,4,5,6,7,8,9,10],
-                question_type: "single_choice"
+                question_type: "rating_star"
             },
             {
                 id: 3,
@@ -43,7 +43,7 @@ module.exports.handler = async function (event, context) {
                 id: 4,
                 question:"How would you rate the value of our food?",
                 answers:[0,1,2,3,4,5],
-                question_type: "single_choice"
+                question_type: "rating_star"
             },
             {
                 id: 5,
