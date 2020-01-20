@@ -195,9 +195,9 @@ module.exports.handler = async function (event, context) {
                         value: "pizza",
                         label: "Pizza"
                     },
-                ]
+                ],
+                question_type: "multiple_choice"
             },
-            question_type: "multiple_choice"
         ]
     }
     return {
