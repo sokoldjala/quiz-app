@@ -1,5 +1,5 @@
 module.exports.handler = async function (event, context) {
-    const { payload } = JSON.parse(event.body)
+    const payload  = JSON.parse(event.body)
     console.log(payload)
     return {
       // return null to show no errors
