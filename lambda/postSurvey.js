@@ -11,11 +11,16 @@ module.exports.handler = async function (event, context, callback) {
           }
         } 
       })
+      return {
+        // return null to show no errors
+        statusCode: 200, // http status code
+        body: JSON.stringify("Success")
+      }
     }
     return {
       // return null to show no errors
-      statusCode: 200, // http status code
-      body: JSON.stringify("Success")
+      statusCode: 422, // http status code
+      body: JSON.stringify("Error")
     }
   } catch (error) {
     return {
