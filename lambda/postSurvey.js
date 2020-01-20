@@ -3,6 +3,7 @@ module.exports.handler = async function (event, context, callback) {
   try {
     if (Array.isArray(payload) && payload.length === 11) {
       payload.map((item)=> {
+      console.log("TCL: item", item)
           if(!item.id && !item.value){
           return {
             // return null to show no errors
