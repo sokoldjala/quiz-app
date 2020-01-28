@@ -1,5 +1,10 @@
 module.exports.handler = async function (event, context) {
     console.log("event", event)
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+      };
     const questionsPayload={
         version: 1,
         data:[
@@ -201,11 +206,7 @@ module.exports.handler = async function (event, context) {
         ]
     }
     if (event.httpMethod === 'OPTIONS') {
-        const headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-          };
+       
           return {
             statusCode: 200,
             headers,
@@ -215,6 +216,7 @@ module.exports.handler = async function (event, context) {
         return {
             // return null to show no errors
             statusCode: 200, // http status code
+            headers,
             body: JSON.stringify(questionsPayload)
         }
     }

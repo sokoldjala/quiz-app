@@ -1,12 +1,12 @@
 module.exports.handler = async function (event, context, callback) {
     const payload = JSON.parse(event.body)
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    };
   try {
     if (event.httpMethod === 'OPTIONS') {
-      const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-      };
       return {
         statusCode: 200,
         headers,
@@ -26,12 +26,14 @@ module.exports.handler = async function (event, context, callback) {
            return {
              // return null to show no errors
              statusCode: 422, // http status code
+             headers,
              body: JSON.stringify("Payload data is not correct or response field missing!")
            }
            }else{
              return {
                // return null to show no errors
                statusCode: 200, // http status code
+               headers,
                body: JSON.stringify("Data posted successfully!")
              }
            }
@@ -39,6 +41,7 @@ module.exports.handler = async function (event, context, callback) {
          return {
            // return null to show no errors
            statusCode: 422, // http status code
+           headers,
            body: JSON.stringify("Payload data is not in valid format!")
          }
        }
@@ -47,6 +50,7 @@ module.exports.handler = async function (event, context, callback) {
     return {
       // return null to show no errors
       statusCode: 422, // http status code
+      headers,
       body: JSON.stringify(error)
     }
   }
