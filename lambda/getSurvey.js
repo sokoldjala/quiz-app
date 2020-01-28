@@ -1,5 +1,5 @@
 module.exports.handler = async function (event, context) {
-    console.log("queryStringParameters", event.queryStringParameters)
+    console.log("event", event)
     const questionsPayload={
         version: 1,
         data:[
