@@ -200,9 +200,22 @@ module.exports.handler = async function (event, context) {
             },
         ]
     }
-    return {
-        // return null to show no errors
-        statusCode: 200, // http status code
-        body: JSON.stringify(questionsPayload)
+    if (event.httpMethod === 'OPTIONS') {
+        const headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+          };
+          return {
+            statusCode: 200,
+            headers,
+            body: 'Options!'
+          };
+    } else {     
+        return {
+            // return null to show no errors
+            statusCode: 200, // http status code
+            body: JSON.stringify(questionsPayload)
+        }
     }
 }
